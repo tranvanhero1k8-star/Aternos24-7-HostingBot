@@ -6,7 +6,7 @@
     "type": "offline"
   },
   "server": {
-    "ip": "mcpe.playwithbao.me",
+    "ip": "mcpe.playwithbao.com",
     "port": 31046,
     "version": "1.21.1",
     "try-creative": true
