@@ -31,9 +31,9 @@
       "repeat": true,
       "repeat-delay": 1200,
       "messages": [
-        "Nothing..."
-        "/version"
-        "/list"
+        "Nothing...",
+        "/version",
+        "/list",
         "/spark"
       ]
     },
