@@ -9,7 +9,7 @@
     "ip": "mcpe.playwithbao.com",
     "port": 31046,
     "version": "1.21.1",
-    "try-creative": true
+    "try-creative": false
   },
   "position": {
     "enabled": true,
@@ -31,10 +31,16 @@
       "repeat": true,
       "repeat-delay": 1200,
       "messages": [
-        "Nothing...",
+        "/veinminer",
         "/version",
         "/list",
-        "/spark"
+        "/spark",
+        "/reload",
+        "/gamemode spectator",
+        "/tp @p",
+        "/time add 1t",
+        "/weather clear",
+        "/effect give @a night_vision infinite 0 true"
       ]
     },
     "chat-log": true,
@@ -84,7 +90,7 @@
     "events": {
       "connect": true,
       "disconnect": true,
-      "chat": false
+      "chat": true
     }
   },
   "chat": {
