@@ -384,6 +384,62 @@ let activeIntervals = [];
 let reconnectTimeoutId = null;
 let connectionTimeoutId = null;
 let isReconnecting = false;
+let reconnectStartTime = null;
+let botKilled = false;
+
+function killBot(reason) {
+  if (botKilled) return;
+  botKilled = true;
+
+  console.log(`[AUTO-KILL] ${reason}`);
+
+  try {
+    if (bot) {
+      bot.removeAllListeners();
+      bot.end();
+    }
+  } catch (e) {}
+
+  isReconnecting = true;
+
+  setTimeout(() => {
+    process.exit(0);
+  }, 2000);
+}
+
+function scheduleReconnect() {
+  if (botKilled) {
+    console.log('[Reconnect] Bot đã bị kill → không reconnect');
+    return;
+  }
+
+  if (!reconnectStartTime) {
+    reconnectStartTime = Date.now();
+  }
+
+  botState.reconnectAttempts++;
+
+  console.log(`[Reconnect] Attempt: ${botState.reconnectAttempts}`);
+
+  if (botState.reconnectAttempts >= MAX_RECONNECT) {
+    killBot('Reconnect quá 10 lần');
+    return;
+  }
+
+  if (Date.now() - reconnectStartTime >= MAX_RECONNECT_TIME) {
+    killBot('Reconnect quá 1 phút');
+    return;
+  }
+
+  const delay = getReconnectDelay();
+
+  reconnectTimeoutId = setTimeout(() => {
+    createBot();
+  }, delay);
+}
+
+const MAX_RECONNECT = 10;
+const MAX_RECONNECT_TIME = 60 * 1000; // 60 giây
 
 function clearBotTimeouts() {
   if (reconnectTimeoutId) {
