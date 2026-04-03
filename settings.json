@@ -6,8 +6,8 @@
     "type": "offline"
   },
   "server": {
-    "ip": "mcpe.mcsh.io",
-    "port": 25565,
+    "ip": "191.96.231.25",
+    "port": 11981,
     "version": "1.21.11",
     "try-creative": false
   },
