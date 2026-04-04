@@ -6,9 +6,9 @@
     "type": "offline"
   },
   "server": {
-    "ip": "191.96.231.25",
-    "port": 11981,
-    "version": "1.21.11",
+    "ip": "aechsmc.playwithbao.com",
+    "port": 52060,
+    "version": "1.17.1",
     "try-creative": false
   },
   "position": {
